@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>智慧藥盒單按鈕模擬</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; }
+  button { padding: 15px 30px; font-size: 18px; margin: 10px; }
+  #log { margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h1>智慧藥盒單按鈕模擬</h1>
+
+<button id="toggleBtn">A鍵：打開/關閉藥盒</button>
+
+<div id="log">
+  <h2>紀錄歷史</h2>
+  <ul id="recordList"></ul>
+</div>
+
+<script>
+let boxOpened = false;
+
+const toggleBtn = document.getElementById('toggleBtn');
+const recordList = document.getElementById('recordList');
+
+toggleBtn.addEventListener('click', () => {
+    const timestamp = new Date().toLocaleString();
+    const li = document.createElement('li');
+
+    if (!boxOpened) {
+        boxOpened = true;
+        li.textContent = `藥盒打開紀錄：${timestamp}`;
+    } else {
+        boxOpened = false;
+        li.textContent = `藥盒關閉紀錄：${timestamp}`;
+    }
+
+    recordList.appendChild(li);
+});
+</script>
+
+</body>
+</html>
